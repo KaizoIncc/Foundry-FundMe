@@ -11,7 +11,7 @@ import {DeployFundMe} from "../../script/DeployFundMe.s.sol";
  * - Integración: Prueba de cómo nuestro código funciona con otras partes
  * - Bifurcación: Prueba de nuestro código en un entorno real simulado
  * - Prueba de ensayo: Prueba de nuestro código en un entorno real no producido
-*/
+ */
 
 /**
  * Para trabajar con tests debemos usar la metodologia 3A:
@@ -19,7 +19,6 @@ import {DeployFundMe} from "../../script/DeployFundMe.s.sol";
  * - Act: realiza la accion que quieres testear
  * - Assert: afirma el test
  */
-
 contract FundMeTest is Test {
     FundMe fundMe;
 
@@ -27,7 +26,7 @@ contract FundMeTest is Test {
     uint256 constant SEND_VALUE = 0.1 ether;
     uint256 constant STARTING_BALANCE = 10 ether;
     uint160 constant GAS_PRICE = 1;
-    
+
     function setUp() external {
         // yo -> FundMeTest -> FundMe = owner es FundMeTest, no yo.
         // fundMe = new FundMe(0x694AA1769357215DE4FAC081bf1f309aDC325306);
@@ -73,7 +72,7 @@ contract FundMeTest is Test {
         fundMe.fund{value: SEND_VALUE}();
         _;
     }
-    
+
     function testOnlyOwnerCanWithdraw() public funded {
         vm.expectRevert();
         vm.prank(USER);
@@ -104,7 +103,7 @@ contract FundMeTest is Test {
         uint160 numberOfFunders = 10;
         uint160 startingFundersIndex = 1; // No es 0 pork puede traer conflictos
 
-        for(uint160 i = startingFundersIndex; i < numberOfFunders; ++i) {
+        for (uint160 i = startingFundersIndex; i < numberOfFunders; ++i) {
             // vm.prank new address
             // vm.deal new address
             // hoax es una combinacion de ambas cosas
@@ -112,7 +111,7 @@ contract FundMeTest is Test {
             // fund the fundMe
             fundMe.fund{value: SEND_VALUE}();
         }
-        
+
         uint256 startingOwnerBalance = fundMe.getOwner().balance;
         uint256 startingFundMeBalance = address(fundMe).balance;
         // Act
@@ -130,7 +129,7 @@ contract FundMeTest is Test {
         uint160 numberOfFunders = 10;
         uint160 startingFundersIndex = 1; // No es 0 pork puede traer conflictos
 
-        for(uint160 i = startingFundersIndex; i < numberOfFunders; ++i) {
+        for (uint160 i = startingFundersIndex; i < numberOfFunders; ++i) {
             // vm.prank new address
             // vm.deal new address
             // hoax es una combinacion de ambas cosas
@@ -138,7 +137,7 @@ contract FundMeTest is Test {
             // fund the fundMe
             fundMe.fund{value: SEND_VALUE}();
         }
-        
+
         uint256 startingOwnerBalance = fundMe.getOwner().balance;
         uint256 startingFundMeBalance = address(fundMe).balance;
         // Act
@@ -151,4 +150,3 @@ contract FundMeTest is Test {
         assert(startingFundMeBalance + startingOwnerBalance == fundMe.getOwner().balance);
     }
 }
-

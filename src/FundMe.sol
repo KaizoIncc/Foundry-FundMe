@@ -42,7 +42,7 @@ contract FundMe {
     // Las lecturas de variable en memoria son menos costosas que las lecturas de variables almacenadas.
     function cheaperWithdraw() public onlyOwner {
         uint256 fundersLength = s_funders.length;
-        for(uint256 funderIndex = 0; funderIndex < fundersLength; funderIndex++) {
+        for (uint256 funderIndex = 0; funderIndex < fundersLength; funderIndex++) {
             address funder = s_funders[funderIndex];
             s_addressToAmountFunded[funder] = 0;
         }
@@ -91,7 +91,6 @@ contract FundMe {
     /**
      * View / Pure functions (Getters)
      */
-
     function getaddressToAmountFunded(address fundingAddress) external view returns (uint256) {
         return s_addressToAmountFunded[fundingAddress];
     }

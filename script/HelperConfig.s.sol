@@ -21,7 +21,7 @@ contract HelperConfig is Script {
     }
 
     constructor() {
-        if(block.chainid == 11155111) activeNetworkConfig = getSepoliaETHConfig();
+        if (block.chainid == 11155111) activeNetworkConfig = getSepoliaETHConfig();
         else activeNetworkConfig = getOrCreateAnvilETHConfig();
     }
 
@@ -32,7 +32,7 @@ contract HelperConfig is Script {
     }
 
     function getOrCreateAnvilETHConfig() public returns (NetworkConfig memory) {
-        if(activeNetworkConfig.priceFeed != address(0)) return activeNetworkConfig;
+        if (activeNetworkConfig.priceFeed != address(0)) return activeNetworkConfig;
         // price feed address
 
         // 1. Deploy mock
@@ -46,4 +46,3 @@ contract HelperConfig is Script {
         return anvilConfig;
     }
 }
-
