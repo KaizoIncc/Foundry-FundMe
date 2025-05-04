@@ -1,66 +1,84 @@
-## Foundry
+# 🏗️ Foundry FundMe
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+Este repositorio contiene una implementación del contrato inteligente **FundMe**, desarrollada utilizando el framework [Foundry](https://book.getfoundry.sh/). El contrato permite a los usuarios financiar el contrato con ETH, y al propietario retirar los fondos. Además, integra Chainlink para garantizar que las contribuciones cumplan con un valor mínimo en USD.
 
-Foundry consists of:
+## 📁 Estructura del Proyecto
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- `src/`: Contiene los contratos inteligentes principales.
+- `script/`: Scripts para desplegar y gestionar los contratos.
+- `test/`: Pruebas automatizadas escritas en Solidity.
+- `broadcast/`: Registros de despliegue generados por Foundry.
+- `lib/`: Dependencias externas y bibliotecas.
+- `foundry.toml`: Archivo de configuración de Foundry.
+- `Makefile`: Comandos útiles para automatizar tareas comunes.
 
-## Documentation
+## 🚀 Requisitos Previos
 
-https://book.getfoundry.sh/
+Asegúrate de tener instalados los siguientes componentes:
 
-## Usage
+- [Foundry](https://book.getfoundry.sh/getting-started/installation)
+- [Git](https://git-scm.com/)
 
-### Build
+Para verificar la instalación de Foundry:
 
-```shell
-$ forge build
+```bash
+forge --version
 ```
 
-### Test
+## ⚙️ Instalación y Uso
 
-```shell
-$ forge test
+# Clonar el repositorio:
+
+```bash
+git clone https://github.com/KaizoIncc/Foundry-FundMe.git
+cd Foundry-FundMe
 ```
 
-### Format
+# Compilar los contratos:
 
-```shell
-$ forge fmt
+```bash
+forge build
 ```
 
-### Gas Snapshots
+# Ejecutar las pruebas:
 
-```shell
-$ forge snapshot
+```bash
+forge test
 ```
 
-### Anvil
+# Formatear el código:
 
-```shell
-$ anvil
+```bash
+forge fmt
 ```
 
-### Deploy
+# Tomar una instantánea de gas:
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```bash
+forge snapshot
 ```
 
-### Cast
+# Iniciar un nodo local con Anvil:
 
-```shell
-$ cast <subcommand>
+```bash
+anvil
 ```
 
-### Help
+# Desplegar el contrato:
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+```bash
+forge script script/DeployFundMe.s.sol:DeployFundMe --rpc-url <RPC_URL> --private-key <PRIVATE_KEY> --broadcast
 ```
+Reemplaza <RPC_URL> y <PRIVATE_KEY> con tu URL de RPC y clave privada correspondientes.
+
+## 🧪 Pruebas
+
+Las pruebas están ubicadas en la carpeta test/ y están escritas en Solidity utilizando el framework de pruebas de Foundry. Para ejecutarlas con mayor detalle:
+
+```bash
+forge test -vv
+```
+
+## 📝 Licencia
+
+Este proyecto está bajo la licencia MIT.
