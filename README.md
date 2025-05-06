@@ -82,3 +82,7 @@ forge test -vv
 ## 📝 Licencia
 
 Este proyecto está bajo la licencia MIT.
+
+## 🙌 Agradecimientos
+
+Este proyecto se basa en el curso de Cyfrin Updraft y ha sido adaptado para prácticas personales.
